@@ -332,7 +332,6 @@ app.post('/health-metrics', authMiddleware, async (req, res) => {
           console.log('Height (m):', heightInMeters);
           console.log('Weight for BMI:', currentWeight);
           const bmi = (currentWeight / (heightInMeters * heightInMeters)).toFixed(2);
-          console.log('Calculated BMI:', bmi);
           metrics.bmi = bmi;
         } else {
           // If no weight is available, set BMI to null
@@ -863,4 +862,6 @@ app.delete('/weight', authMiddleware, async (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
